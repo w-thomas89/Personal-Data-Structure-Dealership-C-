@@ -9,6 +9,7 @@ CONFIG -= app_bundle
 
 SOURCES += \
         customer.cpp \
+        dealership.cpp \
         main.cpp \
         vehicle.cpp
 
@@ -19,4 +20,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     customer.h \
+    dealership.h \
     vehicle.h

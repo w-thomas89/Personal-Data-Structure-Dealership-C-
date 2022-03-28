@@ -1,8 +1,9 @@
-#include <QCoreApplication>
+#include <iostream>
+#include "dealership.h"
 
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
+using namespace std;
 
-    return a.exec();
+int main() {
+    Dealership test = Dealership("test");
+    vehicle car = vehicle("taurus", "blue");
 }
