@@ -1,6 +1,7 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 #include <string>
+#include <ctime>
 using namespace std;
 
 class vehicle
@@ -10,7 +11,7 @@ private:
     string color;   //vehicle color
     bool isNew;     //boolean value for new/used inventory
     int tier;       //upgradeable levels of vehicle (GT, GTS, RTS, Z21, etc..)
-
+    time_t receiveDate;
 public:
     vehicle();
     vehicle(string model);
@@ -26,6 +27,9 @@ public:
     bool getIsNew();
     void setTier(int tier);
     int getTier();
+    void setReceiveDate(time_t recvd);
+    time_t getReceiveDate();
+
 };
 
 #endif // VEHICLE_H

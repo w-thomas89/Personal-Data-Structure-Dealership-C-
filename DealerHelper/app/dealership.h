@@ -12,6 +12,8 @@ private:
     priority_queue<vehicle> inventory;
     vector<customer> customers;
 public:
+    friend bool operator < (vehicle lhs, vehicle rhs);
+    friend bool operator > (vehicle lhs, vehicle rhs);
     Dealership();
     Dealership(string name);
     Dealership(string name, int lotSize);
@@ -20,7 +22,7 @@ public:
     string getName();
     void setLotSize(int lotSize);
     int getLotSize();
-    priority_queue<vehicle> getInventory();
+    vehicle getInventory();
     void addInventory(vehicle toAdd);
     vector<customer> getCustomers();
     void addCustomer(customer toAdd);

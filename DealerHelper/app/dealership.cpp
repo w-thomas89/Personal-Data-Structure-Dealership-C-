@@ -27,8 +27,8 @@ int Dealership::getLotSize() {
     return lotSize;
 }
 
-priority_queue<vehicle> Dealership::getInventory() {
-    return inventory;
+vehicle Dealership::getInventory() {
+    return inventory.top();
 }
 
 void Dealership::addInventory(vehicle toAdd) {
@@ -45,4 +45,12 @@ void Dealership::addCustomer(customer toAdd) {
 
 float Dealership::getLotFull() {
     return (float)inventory.size() / (float)lotSize;
+}
+
+bool operator < (vehicle lhs, vehicle rhs) {
+    return lhs.getReceiveDate() < rhs.getReceiveDate();
+}
+
+bool operator > (vehicle lhs, vehicle rhs) {
+    return lhs.getReceiveDate() > rhs.getReceiveDate();
 }
