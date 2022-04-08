@@ -30,6 +30,8 @@ vehicle::vehicle(string model, string color, bool isNew, int tier) {
     this->tier = tier;
 }
 
+vehicle::~vehicle(){}
+
 void vehicle::setModel(string model) {
     this->model = model;
 }

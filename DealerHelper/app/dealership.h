@@ -3,6 +3,7 @@
 #include "customer.h"
 #include "vehicle.h"
 #include <queue>
+#include <list>
 
 class Dealership
 {
@@ -10,7 +11,7 @@ private:
     string name;
     int lotSize;
     priority_queue<vehicle> inventory;
-    vector<customer> customers;
+    list<customer> customers;
 public:
     friend bool operator < (vehicle lhs, vehicle rhs);
     friend bool operator > (vehicle lhs, vehicle rhs);
@@ -24,7 +25,7 @@ public:
     int getLotSize();
     vehicle getInventory();
     void addInventory(vehicle toAdd);
-    vector<customer> getCustomers();
+    list<customer> getCustomers();
     void addCustomer(customer toAdd);
     float getLotFull();
 };

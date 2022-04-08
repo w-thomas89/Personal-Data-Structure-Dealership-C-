@@ -1,3 +1,4 @@
+#include "customer.h"
 #include <QtTest>
 
 // add necessary includes here
@@ -11,21 +12,35 @@ public:
     ~testDealerHelper();
 
 private slots:
-    void test_case1();
-
+    void testCustomer();
+    void testVehicle();
+    void testDealership();
 };
 
-testDealerHelper::testDealerHelper()
+testDealerHelper::testDealerHelper() {}
+testDealerHelper::~testDealerHelper() {}
+
+void testDealerHelper::testCustomer()
+{
+    string fName, lName, phone;
+    float max = 25000;
+    fName = "John";
+    lName = "Doe";
+    phone = "515-123-4567";
+    customer test = customer(fName, lName, phone);
+    test.setMaxCost(max);
+    QCOMPARE(fName, test.getFirstName());
+    QCOMPARE(lName, test.getLastName());
+    QCOMPARE(phone, test.getPhone());
+    QCOMPARE(max, test.getMaxCost());
+}
+
+void testDealerHelper::testVehicle()
 {
 
 }
 
-testDealerHelper::~testDealerHelper()
-{
-
-}
-
-void testDealerHelper::test_case1()
+void testDealerHelper::testDealership()
 {
 
 }

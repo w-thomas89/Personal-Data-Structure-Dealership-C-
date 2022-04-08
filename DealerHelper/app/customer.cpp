@@ -18,12 +18,22 @@ customer::customer(string fName, string lName, string phone) {
     this->phone = phone;
 }
 
+customer::~customer() {}
+
 void customer::setFirstName(string fName) {
     this->fName = fName;
 }
 
 void customer::setLastName(string lName) {
     this->lName = lName;
+}
+
+string customer::getFirstName() {
+    return fName;
+}
+
+string customer::getLastName() {
+    return lName;
 }
 
 void customer::addPreferedVehicle(vehicle toAdd, int priority) {

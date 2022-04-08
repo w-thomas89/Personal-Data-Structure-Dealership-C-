@@ -11,6 +11,8 @@ Dealership::Dealership(string name, int lotSize) {
     this->lotSize = lotSize;
 }
 
+Dealership::~Dealership() {}
+
 void Dealership::setName(string name) {
     this->name = name;
 }
@@ -35,7 +37,7 @@ void Dealership::addInventory(vehicle toAdd) {
     inventory.push(toAdd);
 }
 
-vector<customer> Dealership::getCustomers() {
+list<customer> Dealership::getCustomers() {
     return customers;
 }
 

@@ -6,6 +6,9 @@ CONFIG -= app_bundle
 
 TEMPLATE = app
 
+INCLUDEPATH += ../app
+
 SOURCES +=  ../app/customer.cpp \
             ../app/vehicle.cpp  \
+            ../app/dealership.cpp \
             tst_testdealerhelper.cpp
