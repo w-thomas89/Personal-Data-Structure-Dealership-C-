@@ -37,7 +37,19 @@ void testDealerHelper::testCustomer()
 
 void testDealerHelper::testVehicle()
 {
-
+    string model, color;
+    model = "Sedan";
+    color = "Blue";
+    bool isNew = true;
+    int tier = 2;
+    time_t datetime = time(0);
+    vehicle test = vehicle(model, color, isNew, tier);
+    test.setReceiveDate(datetime);
+    QCOMPARE(model, test.getModel());
+    QCOMPARE(color, test.getColor());
+    QCOMPARE(isNew, test.getIsNew());
+    QCOMPARE(tier, test.getTier());
+    QCOMPARE(datetime, test.getReceiveDate());
 }
 
 void testDealerHelper::testDealership()
