@@ -1,4 +1,5 @@
 #include "customer.h"
+#include <ctype.h>
 
 customer::customer()
 {
@@ -15,7 +16,8 @@ customer::customer(string fName, string lName) {
 customer::customer(string fName, string lName, string phone) {
     this->fName = fName;
     this->lName = lName;
-    this->phone = phone;
+    //this needs changed to run the functions converting string to int array
+    setPhone(phone);
 }
 
 customer::~customer() {}
@@ -36,6 +38,7 @@ string customer::getLastName() {
     return lName;
 }
 
+//priority queue linked list implemented with a vector using int priority as iterator insertion value
 void customer::addPreferedVehicle(vehicle toAdd, int priority) {
     if (preferVehicle.empty() || (preferVehicle.size() < (unsigned long long)priority)) {
         preferVehicle.push_back(toAdd);
@@ -57,11 +60,22 @@ float customer::getMaxCost() {
     return maxCost;
 }
 
-void customer::setPhone(string phone) {
-    this->phone = phone;
+void customer::setPhone(string strphone) {
+    for (size_t i = 0; i < strphone.length(); i++) {
+        if (!isdigit(strphone[i]) || isspace(strphone[i])) {
+           strphone.erase(i, 1);
+        }
+    }
+    for (size_t j = 0; j < 10; j++) {
+        this->phone[j] = strphone.at(j) - 48;
+    }
 }
 
 string customer::getPhone() {
-    return phone;
+    return "(" + to_string(phone[0]) + to_string(phone[1]) + to_string(phone[2]) + ")" + to_string(phone[3]) + to_string(phone[4]) + to_string(phone[5]) +
+            "-" + to_string(phone[6]) + to_string(phone[7])+ to_string(phone[8])+ to_string(phone[9]);
 }
 
+string customer::toString() {
+    return lName + ", " + fName + "\nPhone: " + getPhone() + "\n";
+}

@@ -1,15 +1,13 @@
 #include <iostream>
-#include "dealership.h"
+#include "customer.h"
 
 using namespace std;
 
 int main() {
-    Dealership test = Dealership("test");
-    vehicle car = vehicle("taurus", "blue");
-    test.addInventory(car);
-    cout << test.getInventory().getColor() << endl;
-    customer stu = customer();
-    stu.setFirstName("STU");
-    test.addCustomer(stu);
-    cout << test.getCustomers().back().getFirstName() << endl;
+    string fName, lName, phone;
+    fName = "John";
+    lName = "Doe";
+    phone = "515-123-4567";
+    customer test = customer(fName, lName, phone);
+    cout << test.toString();
 }

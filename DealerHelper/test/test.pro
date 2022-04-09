@@ -11,4 +11,5 @@ INCLUDEPATH += ../app
 SOURCES +=  ../app/customer.cpp \
             ../app/vehicle.cpp  \
             ../app/dealership.cpp \
+            tst_testCustomer.cpp \
             tst_testdealerhelper.cpp

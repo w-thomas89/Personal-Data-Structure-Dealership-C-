@@ -14,7 +14,7 @@ private:
     string lName;   //Customer Last Name
     vector<vehicle> preferVehicle;  //linked list of preferd vehicles
     float maxCost;  //Customer declared maximum price they will spend
-    string phone;    //array of int for customer phone number
+    int phone[10];    //array of int for customer phone number
 
 
 public:
@@ -32,6 +32,7 @@ public:
     float getMaxCost();
     void setPhone(string phone);
     string getPhone();
+    string toString();
 };
 
 #endif // CUSTOMER_H
