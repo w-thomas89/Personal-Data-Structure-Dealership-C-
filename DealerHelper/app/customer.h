@@ -16,7 +16,6 @@ private:
     float maxCost;  //Customer declared maximum price they will spend
     int phone[10];    //array of int for customer phone number
 
-
 public:
     customer();
     customer(string fName, string lName);

@@ -13,46 +13,30 @@ Dealership::Dealership(string name, int lotSize) {
 
 Dealership::~Dealership() {}
 
-void Dealership::setName(string name) {
-    this->name = name;
-}
+void Dealership::setName(string name) {this->name = name;}
 
-string Dealership::getName() {
-    return name;
-}
+string Dealership::getName() {return name;}
 
-void Dealership::setLotSize(int lotSize) {
-    this->lotSize = lotSize;
-}
+void Dealership::setLotSize(int lotSize) {this->lotSize = lotSize;}
 
-int Dealership::getLotSize() {
-    return lotSize;
-}
+int Dealership::getLotSize() {return lotSize;}
 
-vehicle Dealership::getInventory() {
-    return inventory.top();
-}
+
+list<vehicle> Dealership::getInventory() {return inventory;}
 
 void Dealership::addInventory(vehicle toAdd) {
-    inventory.push(toAdd);
+    if (lotIsFull()) {
+        nextInventory.push(toAdd);
+    }
+    else inventory.push_back(toAdd);
 }
 
-list<customer> Dealership::getCustomers() {
-    return customers;
-}
+list<customer> Dealership::getCustomers() {return customers;}
 
-void Dealership::addCustomer(customer toAdd) {
-    customers.push_back(toAdd);
-}
+void Dealership::addCustomer(customer toAdd) {customers.push_back(toAdd);}
 
-float Dealership::getLotFull() {
-    return (float)inventory.size() / (float)lotSize;
-}
+bool Dealership::lotIsFull() {return ((int)inventory.size() / (int)lotSize) == 0;}
 
-bool operator < (vehicle lhs, vehicle rhs) {
-    return lhs.getReceiveDate() < rhs.getReceiveDate();
-}
-
-bool operator > (vehicle lhs, vehicle rhs) {
-    return lhs.getReceiveDate() > rhs.getReceiveDate();
+string Dealership::toString() {
+    return ""; //TODO - finalize how to handle dealership toString reports
 }

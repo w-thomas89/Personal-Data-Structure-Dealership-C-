@@ -29,7 +29,7 @@ public:
     int getTier();
     void setReceiveDate(time_t recvd);
     time_t getReceiveDate();
-
+    string toString();
 };
 
 #endif // VEHICLE_H

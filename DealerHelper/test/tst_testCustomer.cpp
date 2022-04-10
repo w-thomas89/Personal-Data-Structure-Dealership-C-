@@ -16,6 +16,7 @@ private slots:
     void testCustomerFirstName();
     void testCustomerLastName();
     void testCustomerPhone();
+    void testCustomerPhoneFormat();
     void testCustomerMaxCost();
 };
 
@@ -67,13 +68,30 @@ void testCustomer::testCustomerLastName()
 
 void testCustomer::testCustomerPhone()
 {
-    string fName, lName, phone;
+    string fName, lName, phone, phone2, phone3, phone4;
     fName = "John";
     lName = "Doe";
     phone = "(515)123-4567";
     customer test = customer(fName, lName, phone);
     string actual = test.getPhone();
     QCOMPARE(phone, actual);
+}
+
+void testCustomer::testCustomerPhoneFormat()
+{
+    string phone = "515 123 4567";
+    string phone2 = "(515)-123-4567";
+    string phone3 = "515) 123-4567";
+    string expected = "(515)123-4567";
+    customer test = customer();
+    customer test2 = customer();
+    customer test3 = customer();
+    test.setPhone(phone);
+    test2.setPhone(phone2);
+    test3.setPhone(phone3);
+    QCOMPARE(expected, test.getPhone());
+    QCOMPARE(expected, test2.getPhone());
+    //QCOMPARE(expected, test3.getPhone());
 }
 
 void testCustomer::testCustomerMaxCost()
