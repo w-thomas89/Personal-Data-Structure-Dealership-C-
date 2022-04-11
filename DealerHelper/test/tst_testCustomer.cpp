@@ -91,7 +91,7 @@ void testCustomer::testCustomerPhoneFormat()
     test3.setPhone(phone3);
     QCOMPARE(expected, test.getPhone());
     QCOMPARE(expected, test2.getPhone());
-    //QCOMPARE(expected, test3.getPhone());
+    QCOMPARE(expected, test3.getPhone());
 }
 
 void testCustomer::testCustomerMaxCost()

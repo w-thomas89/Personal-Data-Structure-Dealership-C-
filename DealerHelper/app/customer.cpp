@@ -1,5 +1,6 @@
 #include "customer.h"
 #include <ctype.h>
+#include <regex>
 
 //default constructor
 customer::customer()
@@ -56,20 +57,12 @@ float customer::getMaxCost() {return maxCost;}
  * an array of int sized 10 (for a phone number minus head +1 idea.
  * */
 void customer::setPhone(string strphone) {
-    //TODO - utilize regex to manipulate string?
-    //here we will iterate through the input string one position at a time
-    for (size_t i = 0; i < strphone.length(); i++) {
-        //here we check if the specific character in the string is a digit
-        if (!isdigit(strphone[i]) || isspace(strphone[i])) {
-            //if the character is a digit, we erase it from the string.
-            strphone.erase(i, 1);
-        }
-    }   //at the end of this function. strphone should be a string of 10 digits
+    string fix = regex_replace(strphone, regex(R"([\D])"), "");
 
     //here we will iterate through the ten digits, copying to object variable array
     try {
         for (size_t j = 0; j < 10; j++) {
-            this->phone[j] = strphone.at(j) - 48; //-48 had to be included due to ascii value reference when auto converting in c++
+            this->phone[j] = fix.at(j) - 48; //-48 had to be included due to ascii value reference when auto converting in c++
         }
     }
     catch(exception e) {

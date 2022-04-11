@@ -2,6 +2,7 @@
 #define DEALERSHIP_H
 #include "customer.h"
 #include "vehicle.h"
+#include "employee.h"
 #include <queue>
 #include <list>
 
@@ -13,6 +14,7 @@ private:
     list<vehicle> inventory;
     queue<vehicle> nextInventory;
     list<customer> customers;
+    list<employee> employees;
 public:
     Dealership();
     Dealership(string name);
@@ -28,6 +30,8 @@ public:
     void addCustomer(customer toAdd);
     bool lotIsFull();
     string toString();
+    list<employee> getEmployees();
+    void addEmployee(employee toAdd);
 };
 
 #endif // DEALERSHIP_H

@@ -37,6 +37,11 @@ void Dealership::addCustomer(customer toAdd) {customers.push_back(toAdd);}
 
 bool Dealership::lotIsFull() {return ((int)inventory.size() / (int)lotSize) == 0;}
 
+void Dealership::addEmployee(employee toAdd) {employees.push_back(toAdd);}
+
+list<employee> Dealership::getEmployees() {return employees;}
+
 string Dealership::toString() {
     return ""; //TODO - finalize how to handle dealership toString reports
 }
+
