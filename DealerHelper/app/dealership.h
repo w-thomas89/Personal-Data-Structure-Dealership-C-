@@ -19,7 +19,6 @@ public:
     Dealership();
     Dealership(string name);
     Dealership(string name, int lotSize);
-    virtual ~Dealership();
     void setName(string name);
     string getName();
     void setLotSize(int lotSize);
@@ -32,6 +31,9 @@ public:
     string toString();
     list<employee> getEmployees();
     void addEmployee(employee toAdd);
+    void makeSale(vehicle toRemove);
+    vehicle getNextBackorder();
+    void sortCustomers();
 };
 
 #endif // DEALERSHIP_H

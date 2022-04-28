@@ -35,8 +35,6 @@ vehicle::vehicle(string model, string color, bool isNew, int tier) {
     this->tier = tier;
 }
 
-vehicle::~vehicle(){}
-
 void vehicle::setModel(string model) {this->model = model;}
 
 void vehicle::setColor(string color) {this->color = color;}
@@ -57,6 +55,8 @@ int vehicle::getTier() {return tier;}
 
 time_t vehicle::getReceiveDate() {return receiveDate;}
 
+void vehicle::setLotTime(time_t time) {this->onLotTime = time;}
+
 string vehicle::toString() {
-    return "";  //TODO
+    return "Model: " + model + " Color: " + color + " Tier: " + to_string(tier);
 }

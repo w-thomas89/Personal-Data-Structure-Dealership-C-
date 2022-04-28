@@ -5,7 +5,7 @@
 //default constructor
 customer::customer()
 {
-    //assign first and last name to empty strings
+    //initialize first and last name to empty strings
     fName = "";
     lName = "";
 }
@@ -25,8 +25,6 @@ customer::customer(string fName, string lName, string phone) {
     //utilize function to convert string to array of int for phone #
     setPhone(phone);
 }
-//destructor
-customer::~customer() {}
 
 void customer::setFirstName(string fName) {this->fName = fName;}
 
@@ -36,7 +34,7 @@ string customer::getFirstName() {return fName;}
 
 string customer::getLastName() {return lName;}
 
-//priority queue list implemented with a vector using int priority as iterator insertion value
+//priority queue list implemented with a vector using int as priority
 void customer::addPreferedVehicle(vehicle toAdd, int priority) {
     if (preferVehicle.empty() || (preferVehicle.size() < (unsigned long long)priority)) {
         preferVehicle.push_back(toAdd);
@@ -79,4 +77,12 @@ string customer::getPhone() {
 //this function will print out all the information about the customer
 string customer::toString() {
     return lName + ", " + fName + "\nPhone: " + getPhone() + "\n";
+}
+
+string customer::printPreferList() {
+    string output = "";
+    for (size_t i = 0; i < preferVehicle.size(); i++) {
+        output += preferVehicle[(int)i].toString();
+    }
+    return output;
 }

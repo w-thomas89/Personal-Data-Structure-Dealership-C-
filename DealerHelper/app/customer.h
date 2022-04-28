@@ -20,7 +20,6 @@ public:
     customer();
     customer(string fName, string lName);
     customer(string fName, string lName, string phone);
-    virtual ~customer();
     void setFirstName(string fName);
     string getFirstName();
     void setLastName(string lName);
@@ -32,6 +31,7 @@ public:
     void setPhone(string phone);
     string getPhone();
     string toString();
+    string printPreferList();
 };
 
 #endif // CUSTOMER_H
