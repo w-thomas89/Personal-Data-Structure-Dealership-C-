@@ -7,6 +7,7 @@ SOURCES += \
         customer.cpp \
         dealership.cpp \
         employee.cpp \
+        fill_dealer_tool.cpp \
         main.cpp \
         vehicle.cpp
 

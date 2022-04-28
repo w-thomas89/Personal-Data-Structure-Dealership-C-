@@ -1,13 +1,39 @@
+/***************************************************************
+* Name : DealerHelper
+* Author: William Thomas
+* Created : 03/28/2022
+* Course: CIS 152 - Data Structure
+* Version: 1.0
+* OS: Windows 10
+* IDE: QT 5.12.15
+* Copyright : This is my own original work based on requirements by
+*   instructor
+* Description : This is a console based application that will utilize
+*   multiple data structures to control the inventory and staff/customers
+*   of a vehicle dealership. This program utilizes a list, queue, and vector.
+*   A sorting algorithm was implemented using a vector from a list for the
+*   customer list that sorts alphabetically by last name.
+*   Also created a custom priority queue out of a vector that uses and INT
+*   based priority input to place the item at preferred location. Works like
+*   a priority queue, but can be easily iterated and copied.
+*
+* Academic Honesty: I attest that this is my original work.
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+
+
 #include <iostream>
 #include <conio.h>
 #include "dealership.h"
+#include "fill_dealer_tool.cpp"
 
 using namespace std;
 //function prototypes
 void manager(Dealership*);
 void staff(Dealership*);
 void visitor(Dealership*);
-void fillInventory(Dealership*);
 
 int main() {
     const int numOfOptions = 3;
@@ -56,24 +82,7 @@ int main() {
     }
 }
 
-void fillInventory(Dealership *deal) {
-    //invSize set to be +5 to add to overflow Data Structure
-    int invSize = deal->getLotSize() + 5;
-    int numStaff = 3;
-    int numCustomers = 5;
-    for (int i = 0; i < invSize; i++) {
-        vehicle toAdd = vehicle("Model" + to_string(i), "Color" + to_string(i), true, i%4);
-        deal->addInventory(toAdd);
-    }
-    for (int i = 0; i < numStaff; i++) {
-        employee toAdd = employee("Name", i);
-        deal->addEmployee(toAdd);
-    }
-    for (int i = 0; i < numCustomers; i++) {
-        customer toAdd = customer("FName" + to_string(i), "LName" + to_string(i), "123-456-789" + to_string(i));
-        deal->addCustomer(toAdd);
-    }
-}
+
 
 //This function controls management overview type calls.
 //Here you can print lists of salesman, customers, and inventory
@@ -271,24 +280,17 @@ void staff(Dealership *deal) {
 void visitor(Dealership *deal) {
     const string options[7] = {"View Inventory", "Set Preferred Cost", "Add Preferred Vehicle", "Change Phone", "Change Name", "Print Prefer list", "Exit"};
     customer cust;  //object used during this instance
-    string phone;   //used to compare
+    string phone, fName, lName;
     cout << "Please enter your phone number: ";
     cin >> phone;
-    list<customer> custList = deal->getCustomers();
-    for (customer c: custList) {
-        if (c.getPhone() == phone) {
-            cust = c;
-        }
-        else {
-            string fName, lName;
-            cout << "Please enter your First Name: ";
-            cin >> fName;
-            cout << "Please enter your Last Name: ";
-            cin >> lName;
-            cust = customer(fName, lName, phone);
-            deal->addCustomer(cust);
-        }
-    }
+    cout << "\nPlease enter your First Name: ";
+    cin >> fName;
+    cout << "\nPlease enter your Last Name: ";
+    cin >> lName;
+    cin.ignore();
+    cust = customer(fName, lName, phone);
+    //at this add, the object will search for matching phone numbers and will replace if one is found
+    deal->addCustomer(cust);
     cout << "Welcome to Wanderlust Customer Portal" << endl;
     cout << cust.getFirstName() + " " + cust.getLastName() << endl << endl;
     char choice = 0;
