@@ -35,6 +35,7 @@ void manager(Dealership*);
 void staff(Dealership*);
 void visitor(Dealership*);
 
+//the main method controlling the menu options
 int main() {
     const int numOfOptions = 3;
     const string mainMenu[numOfOptions + 1] = {"Manager", "Staff", "Customer", "Exit"};
@@ -62,6 +63,7 @@ int main() {
             cin >> input;
             choice = input[0];
         }
+        //here we use a switch statement to push you into designated portals
         switch(choice) {
         case '1':
             manager(&deal);
@@ -77,7 +79,7 @@ int main() {
         }
 
         cout << "Press anything to return to the menu" << endl;
-        getch();
+        getch();    //registers key stroke as input.
         cout << endl;
     }
 }
@@ -88,6 +90,7 @@ int main() {
 //Here you can print lists of salesman, customers, and inventory
 //You can also add a salesman, and add a vehicle and perform "payroll"
 void manager(Dealership *deal) {
+    //the available options to be displayed for Manager
     const string options[8] = {"Print Salesman.", "Add Salesman", "Print Customers", "Print Inventory", "Add Vehicle", "Payroll", "Sort Customer List", "Exit"};
     cout << endl << endl;
     cout << "Welcome to the Wanderlust Management Portal" << endl << endl;
@@ -109,6 +112,7 @@ void manager(Dealership *deal) {
             //Print Salesman List
             case '1':
             {
+                //
                 list<employee> temp = deal->getEmployees();
                 for (list<employee>::iterator it = temp.begin(); it != temp.end(); it++) {
                     cout << it->toString() << endl;
@@ -180,6 +184,8 @@ void manager(Dealership *deal) {
     }
 }
 
+//the staff portal
+//from here you can add customer, print customer, print inv, make sale, print sales
 void staff(Dealership *deal) {
     const string options[6] = {"Add Customer", "Print Customers", "Print Inventory", "Make Sale", "Print Sales", "Exit"};
     employee emp;
@@ -277,6 +283,9 @@ void staff(Dealership *deal) {
     }
 
 }
+
+//customer portal
+//from here you can view inventory, set your preferred cost, add to preferred vehicle list, change phone, change name, print prefer list
 void visitor(Dealership *deal) {
     const string options[7] = {"View Inventory", "Set Preferred Cost", "Add Preferred Vehicle", "Change Phone", "Change Name", "Print Prefer list", "Exit"};
     customer cust;  //object used during this instance

@@ -9,12 +9,12 @@
 class Dealership
 {
 private:
-    string name;
-    int lotSize;
-    list<vehicle> inventory;
-    queue<vehicle> nextInventory;
-    list<customer> customers;
-    list<employee> employees;
+    string name;    //dealers name
+    int lotSize;    //lot size - important piece utilized by collaborative data structures
+    list<vehicle> inventory;    //list of vehicles for current inventory
+    queue<vehicle> nextInventory;   //queue of vehicles for the backorder system
+    list<customer> customers;   //list of customers (not necessarily on a salesman's list)
+    list<employee> employees;   //list of employees
 public:
     Dealership();
     Dealership(string name);
