@@ -8,9 +8,9 @@
 class employee
 {
 private:
-    string name;
-    list<customer> customerList;
-    queue<vehicle> salesList;
+    string name;    //just a simple one-namer for employee
+    list<customer> customerList;    //list of salesman's independent contact list
+    queue<vehicle> salesList;       //independent list of sold vehicles
 public:
     int id;
     employee();

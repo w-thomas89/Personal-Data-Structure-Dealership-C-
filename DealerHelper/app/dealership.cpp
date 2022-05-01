@@ -60,7 +60,7 @@ list<customer> Dealership::getCustomers() {return customers;}
 //adding a customer will first check for equality of last name in the current list, this prevents redundancies
 void Dealership::addCustomer(customer toAdd) {
     for (list<customer>::iterator it = customers.begin(); it != customers.end(); it++) {
-        if (it->getLastName().compare(toAdd.getLastName())) {
+        if (it->getLastName() == toAdd.getLastName()) {
             *it = toAdd;
             return;
         }
@@ -98,7 +98,13 @@ void Dealership::makeSale(vehicle toRemove) {
 }
 
 //this does a basic front() or "peek()" on the queue to get the first in line
-vehicle Dealership::getNextBackorder() {return this->nextInventory.front();}
+vehicle Dealership::getNextBackorder() {
+    if (nextInventory.empty()) {
+        vehicle v;
+        return v;
+    }
+     else return this->nextInventory.front();
+}
 
 string Dealership::toString() {
     return ""; //TODO - finalize how to handle dealership toString reports
